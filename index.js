@@ -27,5 +27,5 @@ app.get('/:id', async function (req, res) {
 });
 
 app.listen(serverPort, function () {
-    console.log("Servidor ativo:", serverPort);
+    console.log("Servidor ativo - Porta:", serverPort);
 });
