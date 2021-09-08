@@ -1,0 +1,20 @@
+{
+  "name": "pindureta-wpp-get-number",
+  "version": "1.0.0",
+  "description": "Capturar o numero do telefone e nome do usuario via QRCode do Whatsapp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pindureta",
+    "whatsapp",
+    "qrcode"
+  ],
+  "author": "Gleyson Canela",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "puppeteer": "^10.2.0"
+  }
+}
