@@ -17,6 +17,7 @@ app.get('/', async function (req, res) {
     const puppeteer = require("puppeteer");
     // const domainToSearch = process.argv[2];
     const browser = await puppeteer.launch({
+        executablePath: '/Applications/Chromium.app/Contents/MacOS/Chromium',
         headless: true, args: [
             '--no-sandbox',
             '--disable-setuid-sandbox'
