@@ -1,0 +1,4 @@
+.env
+aws_ec2_node.pem
+package-lock.json
+node_modules

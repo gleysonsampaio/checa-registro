@@ -1,14 +1,34 @@
+require('dotenv/config');
+var cors = require('cors');
 var express = require('express');
 var app = express();
-const serverPort = 3000;
+app.use(cors());
+const serverPort = 21119;
 
-app.get('/:id', async function (req, res) {
-    var domainToSearch = req.params.id
+app.get('/', async function (req, res) {
+    var domainToSearch = req.query.url;
+    console.log("URL consultada:", domainToSearch);
     var disponivel = false;
     var disponivelMsg = "Domínio não disponível";
+    if(domainToSearch == null || domainToSearch.length < 4){
+        res.json({ sucesso: false, dominio: "Não informado", mensagem: "Informe o dominio em ?url=dominiodesejado.com.br" });
+        return;
+    }
     const puppeteer = require("puppeteer");
     // const domainToSearch = process.argv[2];
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({
+        headless: true, args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-extensions',
+            '--disable-dev-shm-usage',
+            '--disable-accelerated-2d-canvas',
+            '--no-first-run',
+            '--no-zygote',
+            '--single-process', // <- this one doesn't works in Windows
+            '--disable-gpu'
+        ],
+    });
     const page = await browser.newPage();
     await page.goto("https://registro.br");
     await page.type("#is-avail-field", domainToSearch);
