@@ -1,4 +1,5 @@
 .env
 aws_ec2_node.pem
 package-lock.json
+domain.png
 node_modules

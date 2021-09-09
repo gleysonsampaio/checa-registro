@@ -3,7 +3,7 @@ var cors = require('cors');
 var express = require('express');
 var app = express();
 app.use(cors());
-const serverPort = 21119;
+const serverPort = process.env.PORT || 3333;
 
 app.get('/', async function (req, res) {
     var domainToSearch = req.query.url;
